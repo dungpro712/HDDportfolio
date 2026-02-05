@@ -12,58 +12,79 @@
     <div class="wrap header-inner">
       <h1 class="brand">[Your Name]</h1>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#about" class="nav-link" data-target="about">About</a>
+        <a href="#experience" class="nav-link" data-target="experience">Experience</a>
+        <a href="#contact" class="nav-link" data-target="contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <section id="about" class="panel">
+    <section id="about" class="panel" aria-labelledby="about-heading">
+      <h2 id="about-heading" tabindex="-1">About Me</h2>
       <div class="about-grid">
         <img src="profile.jpg" alt="[Your Name] photo" class="photo" />
         <div>
-          <h2>About Me</h2>
-          <p class="lead">Hi — I'm <strong>[Your Name]</strong>, a high-school student at <em>[School Name]</em>. I enjoy coding, robotics, and design. I build small web apps and participate in school clubs.</p>
+          <p class="lead">Hello — I'm <strong>[Your Name]</strong>, a high-school student at <em>[School Name]</em>. I enjoy building projects, learning new technologies, and participating in clubs and competitions.</p>
 
+          <h3>Quick facts</h3>
           <ul class="meta-list">
-            <li><strong>Grade:</strong> [e.g., 11]</li>
-            <li><strong>Interests:</strong> Coding, Robotics, Math, Writing</li>
-            <li><strong>Skills:</strong> HTML • CSS • JavaScript • Git</li>
+            <li><strong>Grade:</strong> 11th (expected graduation: 2027)</li>
+            <li><strong>Location:</strong> [City, Country]</li>
+            <li><strong>GPA:</strong> [optional]</li>
           </ul>
 
-          <p><a class="btn" href="resume.pdf" download>Download Resume</a></p>
+          <h3>Skills</h3>
+          <p>Languages & tools: HTML, CSS, JavaScript, Git, Python (basic)</p>
+          <ul>
+            <li>Web development: responsive layout, DOM, fetch API</li>
+            <li>Projects: small web apps, automation scripts</li>
+            <li>Other: teamwork, tutoring, public speaking</li>
+          </ul>
+
+          <p><a href="resume.pdf" class="btn">Download Resume</a>
+          <a href="https://github.com/dungpro712" class="btn alt" target="_blank" rel="noopener">GitHub</a></p>
         </div>
       </div>
+
+      <h3>Interests</h3>
+      <p>I enjoy robotics, problem solving, competitive programming, and UI/UX design. I’m currently learning more advanced JavaScript and experimenting with small game projects.</p>
     </section>
 
-    <section id="experience" class="panel">
-      <h2>Experience & Projects</h2>
-
-      <article class="card">
-        <h3>Robotics Club — Member</h3>
-        <p class="date">2023 — Present</p>
-        <p>Helped design and program autonomous routines, worked on sensors and wiring, and participated in competitions.</p>
-      </article>
+    <section id="experience" class="panel" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" tabindex="-1">Experience & Projects</h2>
 
       <article class="card">
         <h3>Weather Dashboard — Personal Project</h3>
         <p class="date">2024</p>
-        <p>Built a small web app using the Fetch API to show 5-day forecasts. Tech: HTML, CSS, JavaScript.</p>
-        <p><a href="#" class="link">View project</a></p>
+        <p>A responsive web app that fetches weather data from a public API and displays the current conditions and 5-day forecast. Features include search by city, icons, and responsive layout.</p>
+        <p><strong>Tech:</strong> HTML, CSS, JavaScript, Fetch API</p>
+        <p><a href="#" class="link">Live demo</a> • <a href="https://github.com/dungpro712/weather-dashboard" target="_blank" rel="noopener">Source</a></p>
+      </article>
+
+      <article class="card">
+        <h3>Robotics Club — Team Member</h3>
+        <p class="date">2023 — Present</p>
+        <p>Helped design and program autonomous routines, worked on wiring and sensor testing, and participated in local competitions. Gained experience with teamwork and iterative testing.</p>
+        <p><strong>Highlights:</strong> Designed sensor mounting, helped iterate on a line-following routine.</p>
       </article>
 
       <article class="card">
         <h3>Library Tutor — Volunteer</h3>
         <p class="date">2022 — Present</p>
-        <p>Tutor middle school students in math and reading; improved communication and leadership skills.</p>
+        <p>Volunteer tutor for middle-school students in math and reading. Responsible for creating simple lesson plans and tracking student progress.</p>
       </article>
+
+      <h3>Other Projects</h3>
+      <ul>
+        <li><strong>Portfolio site:</strong> This site — built with plain HTML/CSS/JS (this repo).</li>
+        <li><strong>Calculator app:</strong> JavaScript calculator with memory and keyboard support.</li>
+      </ul>
     </section>
 
-    <section id="contact" class="panel">
-      <h2>Contact</h2>
-      <p>If you'd like to get in touch, email me at <a href="mailto:your.email@example.com">your.email@example.com</a> or use the form below.</p>
+    <section id="contact" class="panel" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" tabindex="-1">Contact</h2>
+      <p>If you'd like to reach me, email me at <a href="mailto:your.email@example.com">your.email@example.com</a> or use the contact form below.</p>
 
       <form id="contact-form" class="contact-form" novalidate>
         <label for="c-name">Name</label>
@@ -82,6 +103,12 @@
 
         <p id="status" aria-live="polite" class="status"></p>
       </form>
+
+      <h3>Other ways to connect</h3>
+      <p>
+        <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener" class="link">LinkedIn</a> •
+        <a href="https://github.com/dungpro712" target="_blank" rel="noopener" class="link">GitHub</a>
+      </p>
     </section>
   </main>
 
@@ -92,29 +119,46 @@
   </footer>
 
   <script>
-    // Minimal JS: year, mailto and simple validation
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.nav-link');
+      const panels = document.querySelectorAll('.panel');
 
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('status');
-    document.getElementById('mailto').addEventListener('click', () => {
-      const name = encodeURIComponent(document.getElementById('c-name').value || '');
-      const email = encodeURIComponent(document.getElementById('c-email').value || '');
-      const msg = encodeURIComponent(document.getElementById('c-message').value || '');
-      location.href = 'mailto:your.email@example.com?subject=' + (name || 'Contact') + '&body=' + msg + '%0D%0A%0D%0AFrom:%20' + email;
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()) {
-        status.textContent = 'Please fill in all fields.';
-        status.style.color = '#c0392b';
-        return;
+      function activate(targetId) {
+        panels.forEach(p => { if (p.id === targetId) p.classList.add('active'); else p.classList.remove('active'); });
+        links.forEach(l => l.classList.toggle('active', l.dataset.target === targetId));
+        history.replaceState(null, '', '#' + targetId);
+        const panel = document.getElementById(targetId);
+        panel.querySelector('h2')?.focus?.();
       }
-      // Demo submission - replace with real backend or a form service
-      status.textContent = 'Thanks — message received (demo).';
-      status.style.color = '#16a085';
-      form.reset();
+
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          activate(link.dataset.target);
+        });
+      });
+
+      const start = location.hash.replace('#','') || 'about';
+      activate(start);
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      document.getElementById('mailto').addEventListener('click', () => {
+        const name = encodeURIComponent(document.getElementById('c-name').value || '');
+        const email = encodeURIComponent(document.getElementById('c-email').value || '');
+        const msg = encodeURIComponent(document.getElementById('c-message').value || '');
+        location.href = 'mailto:your.email@example.com?subject=' + (name || 'Contact') + '&body=' + msg + '%0D%0A%0D%0AFrom:%20' + email;
+      });
+
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('status');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()){ 
+          status.textContent = 'Please fill in all fields.'; status.style.color = '#ffb4b4'; return;
+        }
+        status.textContent = 'Thanks! Message received (demo).'; status.style.color = '#bff7d5'; form.reset();
+      });
     });
   </script>
 </body>
