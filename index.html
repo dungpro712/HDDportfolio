@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>[Your Name] — High School Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Portfolio of a high school student: About, Experience, Contact" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title">[Your Name]</h1>
+      <nav class="site-nav" aria-label="Main">
+        <button class="tab-btn active" data-target="about">About Me</button>
+        <button class="tab-btn" data-target="experience">Experience</button>
+        <button class="tab-btn" data-target="contact">Contact Me</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about" class="tab-panel active" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <div class="about-grid">
+        <img src="profile-placeholder.jpg" alt="[Your Name] headshot" class="profile-photo" />
+        <div>
+          <p>Hello! I'm <strong>[Your Name]</strong>, a high-school student at [School Name]. I enjoy coding, robotics, and design. I’m learning web development (HTML/CSS/JS) and like building small projects — check my Experience tab for projects and activities.</p>
+          <ul>
+            <li>Grade: [e.g., 11th Grade]</li>
+            <li>Interests: coding, robotics, math, creative writing</li>
+            <li>Skills: HTML, CSS, JavaScript, basic Git</li>
+          </ul>
+          <p><a href="#" id="download-resume">Download Resume (PDF)</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="tab-panel" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
+
+      <article class="experience-item">
+        <h3>Robotics Club — Member</h3>
+        <p class="meta">2023 — Present</p>
+        <p>Worked on the team to design and program autonomous routines using [platform]. Helped with wiring and testing sensors.</p>
+      </article>
+
+      <article class="experience-item">
+        <h3>Personal Project: Weather Dashboard</h3>
+        <p class="meta">2024</p>
+        <p>Built a small web app that fetches weather data from an API and displays a 5-day forecast. Tech: HTML, CSS, JavaScript, fetch API.</p>
+        <p><a href="#" class="project-link">View project (link)</a></p>
+      </article>
+
+      <article class="experience-item">
+        <h3>Volunteer: Local Library Tutoring</h3>
+        <p class="meta">2022 — Present</p>
+        <p>Tutor middle-school students in math and reading. Improved leadership and communication skills.</p>
+      </article>
+    </section>
+
+    <section id="contact" class="tab-panel" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact Me</h2>
+      <p>If you'd like to contact me, use the form below or email me at <a href="mailto:your.email@example.com">your.email@example.com</a>.</p>
+
+      <form id="contact-form" class="contact-form" novalidate>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <div class="form-actions">
+          <button type="submit">Send Message</button>
+          <button type="button" id="mailto-btn">Open Email App</button>
+        </div>
+
+        <p id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; <span id="year"></span> [Your Name] — High school portfolio</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
